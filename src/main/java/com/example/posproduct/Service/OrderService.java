@@ -1,4 +1,4 @@
 package com.example.posproduct.Service;
 
-public class ProductService {
+public class OrderService {
 }

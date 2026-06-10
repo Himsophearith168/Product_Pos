@@ -26,7 +26,9 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Oder> order;
 
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private List<Payment> payments;
 }

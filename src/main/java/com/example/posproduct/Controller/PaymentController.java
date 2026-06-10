@@ -1,4 +1,4 @@
 package com.example.posproduct.Controller;
 
-public class CategoryController {
+public class PaymentController {
 }

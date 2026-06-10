@@ -6,6 +6,7 @@ import lombok.*;
 import org.hibernate.annotations.Fetch;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "Oders")
@@ -33,4 +34,13 @@ public class Oder {
     @JoinColumn(name = "product_id")
     private Product product;
 
+    @OneToMany(
+            mappedBy = "order",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<OrderDetail> orderDetail;
+
+    @OneToMany(mappedBy = "order",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Payment> payments;
 }
