@@ -1,6 +1,6 @@
 package com.example.posproduct.Controller;
 
-import com.example.posproduct.DTO.ProductDTO;
+import com.example.posproduct.DTO.ProductRequest;
 import com.example.posproduct.Service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,12 +15,12 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping
-    public List<ProductDTO> getAllProducts() {
+    public List<ProductRequest> getAllProducts() {
         return productService.getAllProducts();
     }
 
     @PostMapping
-    public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO productDTO) {
+    public ResponseEntity<ProductRequest> createProduct(@RequestBody ProductRequest productDTO) {
         return ResponseEntity.ok(productService.createProduct(productDTO));
     }
 }

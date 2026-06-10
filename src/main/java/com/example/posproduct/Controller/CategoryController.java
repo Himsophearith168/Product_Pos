@@ -1,6 +1,6 @@
 package com.example.posproduct.Controller;
 
-import com.example.posproduct.DTO.CategoryDTO;
+import com.example.posproduct.DTO.CategoryRequest;
 import com.example.posproduct.Service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,12 +15,12 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     @GetMapping
-    public List<CategoryDTO> getAllCategories() {
+    public List<CategoryRequest> getAllCategories() {
         return categoryService.getAllCategories();
     }
 
     @PostMapping
-    public ResponseEntity<CategoryDTO> createCategory(@RequestBody CategoryDTO categoryDTO) {
+    public ResponseEntity<CategoryRequest> createCategory(@RequestBody CategoryRequest categoryDTO) {
         return ResponseEntity.ok(categoryService.createCategory(categoryDTO));
     }
 }

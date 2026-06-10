@@ -1,6 +1,6 @@
 package com.example.posproduct.Service;
 
-import com.example.posproduct.DTO.CategoryDTO;
+import com.example.posproduct.DTO.CategoryRequest;
 import com.example.posproduct.Model.Category;
 import com.example.posproduct.Repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,17 +14,17 @@ import java.util.stream.Collectors;
 public class CategoryService {
     private final CategoryRepository categoryRepository;
 
-    public List<CategoryDTO> getAllCategories() {
+    public List<CategoryRequest> getAllCategories() {
         return categoryRepository.findAll().stream()
-                .map(category -> new CategoryDTO(category.getId(), category.getCategoryName(), category.getDescription()))
+                .map(category -> new CategoryRequest(category.getId(), category.getCategoryName(), category.getDescription()))
                 .collect(Collectors.toList());
     }
 
-    public CategoryDTO createCategory(CategoryDTO categoryDTO) {
+    public CategoryRequest createCategory(CategoryRequest categoryDTO) {
         Category category = new Category();
         category.setCategoryName(categoryDTO.getCategoryName());
         category.setDescription(categoryDTO.getDescription());
         Category savedCategory = categoryRepository.save(category);
-        return new CategoryDTO(savedCategory.getId(), savedCategory.getCategoryName(), savedCategory.getDescription());
+        return new CategoryRequest(savedCategory.getId(), savedCategory.getCategoryName(), savedCategory.getDescription());
     }
 }

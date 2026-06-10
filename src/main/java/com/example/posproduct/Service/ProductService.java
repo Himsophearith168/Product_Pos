@@ -1,6 +1,6 @@
 package com.example.posproduct.Service;
 
-import com.example.posproduct.DTO.ProductDTO;
+import com.example.posproduct.DTO.ProductRequest;
 import com.example.posproduct.Model.Category;
 import com.example.posproduct.Model.Product;
 import com.example.posproduct.Repository.CategoryRepository;
@@ -17,13 +17,13 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
 
-    public List<ProductDTO> getAllProducts() {
+    public List<ProductRequest> getAllProducts() {
         return productRepository.findAll().stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
 
-    public ProductDTO createProduct(ProductDTO productDTO) {
+    public ProductRequest createProduct(ProductRequest productDTO) {
         Category category = categoryRepository.findById(productDTO.getCategoryId())
                 .orElseThrow(() -> new RuntimeException("Category not found"));
 
@@ -40,8 +40,8 @@ public class ProductService {
         return convertToDTO(savedProduct);
     }
 
-    private ProductDTO convertToDTO(Product product) {
-        return new ProductDTO(
+    private ProductRequest convertToDTO(Product product) {
+        return new ProductRequest(
                 product.getId(),
                 product.getName(),
                 product.getDescription(),
