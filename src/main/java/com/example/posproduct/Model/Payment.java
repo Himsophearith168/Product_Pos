@@ -1,7 +1,6 @@
 package com.example.posproduct.Model;
 
 import jakarta.persistence.*;
-import jakarta.persistence.criteria.Order;
 import lombok.*;
 import org.hibernate.annotations.Fetch;
 

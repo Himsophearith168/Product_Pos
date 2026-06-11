@@ -1,7 +1,6 @@
 package com.example.posproduct.Model;
 
 import jakarta.persistence.*;
-import jakarta.persistence.criteria.Order;
 import lombok.*;
 
 import java.util.List;
@@ -27,7 +26,7 @@ public class User {
     private String password;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Oder> order;
+    private List<Oder> orders;
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<Payment> payments;

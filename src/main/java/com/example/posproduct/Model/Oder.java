@@ -1,9 +1,7 @@
 package com.example.posproduct.Model;
 
-
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Fetch;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -13,8 +11,6 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Setter
-@Getter
 @Builder
 public class Oder {
     @Id
@@ -26,21 +22,17 @@ public class Oder {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User user_id;
+    private User user;
 
     private Double amount;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
-    private Product product;
 
     @OneToMany(
             mappedBy = "order",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private List<OrderDetail> orderDetail;
+    private List<OrderDetail> orderDetails;
 
-    @OneToMany(mappedBy = "order",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Payment> payments;
 }
