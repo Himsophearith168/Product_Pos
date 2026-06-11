@@ -43,7 +43,7 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<APIResponse<CategoryResponse>> getCategoryById(@PathVariable Integer id) {
+    public ResponseEntity<APIResponse<CategoryResponse>> getCategoryById(@PathVariable Long id) {
         CategoryResponse response = categoryService.getCategoryById(id);
         return ResponseEntity.ok(
                 APIResponse.<CategoryResponse>builder()
@@ -55,7 +55,7 @@ public class CategoryController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<APIResponse<CategoryResponse>> updateCategory(@PathVariable Integer id, @RequestBody CategoryRequest request) {
+    public ResponseEntity<APIResponse<CategoryResponse>> updateCategory(@PathVariable Long id, @RequestBody CategoryRequest request) {
         CategoryResponse response = categoryService.updateCategory(id, request);
         return ResponseEntity.ok(
                 APIResponse.<CategoryResponse>builder()
@@ -67,7 +67,7 @@ public class CategoryController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<APIResponse<Void>> deleteCategory(@PathVariable Integer id) {
+    public ResponseEntity<APIResponse<Void>> deleteCategory(@PathVariable Long id) {
         categoryService.deleteCategory(id);
         return ResponseEntity.ok(
                 APIResponse.<Void>builder()

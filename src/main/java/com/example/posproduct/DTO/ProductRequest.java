@@ -8,10 +8,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductRequest {
+    private Long category_id;
     private String name;
     private String description;
     private Double price;
     private Integer quantity;
     private String image;
-    private Integer categoryId;
+    private Long categoryId;
 }

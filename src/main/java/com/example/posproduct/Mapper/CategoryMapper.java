@@ -19,6 +19,7 @@ public class CategoryMapper {
     public CategoryResponse toResponse(Category category) {
         if (category == null) return null;
         CategoryResponse response = new CategoryResponse();
+        response.setCategoryId(category.getId());
         response.setCategoryName(category.getCategoryName());
         response.setDescription(category.getDescription());
         return response;
