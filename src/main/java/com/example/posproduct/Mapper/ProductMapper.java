@@ -16,7 +16,6 @@ public class ProductMapper {
                 .description(request.getDescription())
                 .price(request.getPrice())
                 .quantity(request.getQuantity())
-                .image(request.getImage())
                 .category(category)
                 .build();
     }
@@ -29,7 +28,14 @@ public class ProductMapper {
         response.setDescription(product.getDescription());
         response.setPrice(product.getPrice());
         response.setQuantity(product.getQuantity());
-        response.setImage(product.getImage());
+        
+        String imageName = product.getImage();
+        if (imageName != null && !imageName.isEmpty()) {
+            response.setImage("/uploads/products/" + imageName);
+        } else {
+            response.setImage(null);
+        }
+
         if (product.getCategory() != null) {
             response.setCategoryId(product.getCategory().getId());
         }
@@ -42,7 +48,6 @@ public class ProductMapper {
         product.setDescription(request.getDescription());
         product.setPrice(request.getPrice());
         product.setQuantity(request.getQuantity());
-        product.setImage(request.getImage());
         product.setCategory(category);
     }
 }
